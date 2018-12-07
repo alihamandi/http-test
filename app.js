@@ -7,6 +7,7 @@ const http = require('http')
 const url = require('url')
 // i start this with a capital letter cause its a class
 const StringDecoder = require('string_decoder').StringDecoder
+const handlers = require('./handlers')
 
 
 // create a server so it can deal with our request
@@ -87,23 +88,7 @@ let server = http.createServer((req, res) => {
     })
 })
 
-let handlers = {}
 
-handlers.home = function (data,callback) {
-    callback(200 , {'location':'home'})
-}
-
-handlers.users = function (data,callback) {
-    callback(200 , {'location':'users'})
-}
-
-handlers.ping = function (data,callback) {
-    callback(200 , {'location':'ping'})
-}
-
-handlers.notFound = function (data,callback) {
-    callback(404)
-}
 
 let router = {
     'home': handlers.home,
